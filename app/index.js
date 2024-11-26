@@ -11,12 +11,16 @@ export default function Page() {
       'Walk dog'
     ]);
 
+  const addTask = (taskText) => {
+    setTasks([...tasks, taskText]);
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.main}>
         <Text style={styles.title}>TODO List</Text>
         <ToDoList tasks={tasks} />
-        <ToDoForm />
+        <ToDoForm addTask={addTask} />
       </View>
     </View>
   );
