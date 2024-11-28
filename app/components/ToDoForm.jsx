@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
         marginTop: 20,
     },
     input: {
+        width: '50%',
         flex: 1,
         borderWidth: 1,
         borderColor: '#ccc',

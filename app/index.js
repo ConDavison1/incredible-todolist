@@ -1,49 +1,20 @@
-import { StyleSheet, Text, View } from "react-native";
-import ToDoForm from "../components/ToDoForm";
-import ToDoList from "../components/ToDoList";
-import { useState } from "react";
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import HomeScreen from "./screens/HomeScreen";
+import AboutScreen from "./screens/AboutScreen";
 
-export default function Page() {
-  const [tasks, setTasks] = useState(
-    [
-      'Do laundry',
-      'Go to gym',
-      'Walk dog'
-    ]);
+const Stack = createStackNavigator();
 
-  const addTask = (taskText) => {
-    setTasks([...tasks, taskText]);
-  };
+export default function App() {
 
   return (
-    <View style={styles.container}>
-      <View style={styles.main}>
-        <Text style={styles.title}>TODO List</Text>
-        <ToDoList tasks={tasks} />
-        <ToDoForm addTask={addTask} />
-      </View>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="About" component={AboutScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    padding: 24,
-  },
-  main: {
-    flex: 1,
-    justifyContent: "center",
-    maxWidth: 960,
-    marginHorizontal: "auto",
-  },
-  title: {
-    fontSize: 64,
-    fontWeight: "bold",
-  },
-  subtitle: {
-    fontSize: 36,
-    color: "#38434D",
-  },
-});
